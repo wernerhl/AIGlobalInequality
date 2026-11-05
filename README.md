@@ -17,3 +17,7 @@ A two-sector model in which AI capital complements skilled labor, development ca
 cd paper
 pdflatex ai_crowdout && bibtex ai_crowdout && pdflatex ai_crowdout && pdflatex ai_crowdout
 ```
+
+## Empirics
+
+`empirics/` contains a data pipeline for the testable predictions in Section IV: SEC EDGAR capex and earnings-release dates for the AI firms, Yahoo prices and EPS surprises, FRED rates and ICE BofA EM spreads, Ken French factors, the constructed AI return shocks, and first-pass event-day regressions. See `empirics/README.md` and `empirics/output/results.md`.

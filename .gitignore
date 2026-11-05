@@ -6,3 +6,7 @@
 *.fdb_latexmk
 *.out
 *.synctex.gz
+
+# empirical pipeline raw downloads (re-downloadable, ~30MB)
+empirics/data/raw/
+__pycache__/
