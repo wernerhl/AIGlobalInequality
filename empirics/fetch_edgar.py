@@ -31,10 +31,19 @@ FLOW_CONCEPTS = {
     "cfo": ["NetCashProvidedByUsedInOperatingActivities"],
     "dep": ["DepreciationDepletionAndAmortization", "DepreciationAndAmortization",
             "Depreciation"],
+    # Financing side: how the capex is funded from the common pool.
+    "debt_issued": ["ProceedsFromIssuanceOfLongTermDebt", "ProceedsFromIssuanceOfDebt",
+                    "ProceedsFromIssuanceOfSeniorLongTermDebt"],
+    "debt_repaid": ["RepaymentsOfLongTermDebt", "RepaymentsOfDebt", "RepaymentsOfSeniorDebt"],
+    "cp_net": ["ProceedsFromRepaymentsOfCommercialPaper", "ProceedsFromRepaymentsOfShortTermDebt"],
+    "buybacks": ["PaymentsForRepurchaseOfCommonStock"],
+    "dividends": ["PaymentsOfDividends", "PaymentsOfDividendsCommonStock"],
 }
 STOCK_CONCEPTS = {
     "assets": ["Assets"],
     "ppe_net": ["PropertyPlantAndEquipmentNet"],
+    "long_term_debt": ["LongTermDebt", "LongTermDebtNoncurrent", "DebtInstrumentCarryingAmount"],
+    "cash": ["CashCashEquivalentsAndShortTermInvestments", "CashAndCashEquivalentsAtCarryingValue"],
 }
 
 

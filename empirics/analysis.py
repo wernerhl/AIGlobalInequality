@@ -90,7 +90,8 @@ def event_day_tests(ret, fred, shocks):
     df = df[df["n_reporting"] > 0]
     controls = ["d2_DGS2", "d2_VIX", "d2_USD", "r2_SPY", "r2_IEF"]
     rows = []
-    for shock in ["ai_earnings_shock", "hyperscaler_earnings_shock", "capex_surprise_assets"]:
+    for shock in ["ai_earnings_shock", "hyperscaler_earnings_shock", "capex_surprise_assets",
+                  "supplier_implied_capex_shock"]:
         for t, lab in ETF_OUTCOMES.items():
             for c in ([], controls):
                 r = regress(df, f"r2_{t}", shock, c, f"{lab} return (%)", scale=100)
@@ -192,7 +193,10 @@ def main():
              f"on {n_ev} distinct reaction days.", "",
              "Shock units: `ai_earnings_shock` and `hyperscaler_earnings_shock` are mean two-day "
              "abnormal returns (decimal) of the firms reporting that day; `capex_surprise_assets` "
-             "is the capex surprise scaled by lagged assets (decimal); `ai_ff_resid` is the daily "
+             "is the capex surprise scaled by lagged assets (decimal); `supplier_implied_capex_shock` "
+             "is the two-day abnormal return of the AI supply-chain basket on hyperscaler "
+             "announcement days (a market-based proxy for the capex-guidance surprise); "
+             "`ai_ff_resid` is the daily "
              "AI-basket residual from the FF5+Mom model (decimal); `ai_minus_mkt` is the basket "
              "return minus SPY. Outcomes are in percent (ETF returns) or basis points (OAS). "
              "A coefficient of 0.05 on an ETF-return outcome means a 10% AI abnormal return "

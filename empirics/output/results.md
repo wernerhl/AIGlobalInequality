@@ -2,68 +2,86 @@
 
 Events: 133 earnings releases by 8 AI firms, 2022-10-26 to 2026-11-04, on 107 distinct reaction days.
 
-Shock units: `ai_earnings_shock` and `hyperscaler_earnings_shock` are mean two-day abnormal returns (decimal) of the firms reporting that day; `capex_surprise_assets` is the capex surprise scaled by lagged assets (decimal); `ai_ff_resid` is the daily AI-basket residual from the FF5+Mom model (decimal); `ai_minus_mkt` is the basket return minus SPY. Outcomes are in percent (ETF returns) or basis points (OAS). A coefficient of 0.05 on an ETF-return outcome means a 10% AI abnormal return moves the ETF by 0.5%. HAC standard errors.
+Shock units: `ai_earnings_shock` and `hyperscaler_earnings_shock` are mean two-day abnormal returns (decimal) of the firms reporting that day; `capex_surprise_assets` is the capex surprise scaled by lagged assets (decimal); `supplier_implied_capex_shock` is the two-day abnormal return of the AI supply-chain basket on hyperscaler announcement days (a market-based proxy for the capex-guidance surprise); `ai_ff_resid` is the daily AI-basket residual from the FF5+Mom model (decimal); `ai_minus_mkt` is the basket return minus SPY. Outcomes are in percent (ETF returns) or basis points (OAS). A coefficient of 0.05 on an ETF-return outcome means a 10% AI abnormal return moves the ETF by 0.5%. HAC standard errors.
 
 Prediction of the crowding-out model: positive AI shocks lower EM bond ETF prices (negative coefficient) and raise EM spreads (positive coefficient), beyond what US rates, VIX, the dollar and the market explain. The AI-for-development view predicts the opposite signs; donor politics predicts zero.
 
 ## A. Event days (two-day windows around AI earnings releases)
 
-| outcome                                 | shock                      | controls   | coef (se)         |     t |     p |   n |    r2 |
-|:----------------------------------------|:---------------------------|:-----------|:------------------|------:|------:|----:|------:|
-| EM USD sovereign bond ETF return (%)    | ai_earnings_shock          | no         | 0.095 (0.724)     |  0.13 | 0.896 | 106 | 0     |
-| EM USD sovereign bond ETF return (%)    | ai_earnings_shock          | yes        | -0.096 (0.419)    | -0.23 | 0.82  | 106 | 0.816 |
-| EM sovereign debt ETF return (%)        | ai_earnings_shock          | no         | 0.033 (1.008)     |  0.03 | 0.974 | 106 | 0     |
-| EM sovereign debt ETF return (%)        | ai_earnings_shock          | yes        | -0.318 (0.602)    | -0.53 | 0.598 | 106 | 0.776 |
-| EM high-yield bond ETF return (%)       | ai_earnings_shock          | no         | 0.283 (0.614)     |  0.46 | 0.645 | 106 | 0.002 |
-| EM high-yield bond ETF return (%)       | ai_earnings_shock          | yes        | -0.115 (0.482)    | -0.24 | 0.812 | 106 | 0.63  |
-| EM local-currency bond ETF return (%)   | ai_earnings_shock          | no         | -0.224 (0.745)    | -0.3  | 0.763 | 106 | 0.001 |
-| EM local-currency bond ETF return (%)   | ai_earnings_shock          | yes        | -0.230 (0.367)    | -0.63 | 0.531 | 106 | 0.8   |
-| EM equity ETF return (%)                | ai_earnings_shock          | no         | 2.763 (1.975)     |  1.4  | 0.162 | 106 | 0.018 |
-| EM equity ETF return (%)                | ai_earnings_shock          | yes        | 2.335 (1.385)     |  1.69 | 0.092 | 106 | 0.725 |
-| EM public-sector OAS change (bp)        | ai_earnings_shock          | no         | -5.283 (5.430)    | -0.97 | 0.331 |  74 | 0.01  |
-| EM public-sector OAS change (bp)        | ai_earnings_shock          | yes        | 0.357 (3.544)     |  0.1  | 0.92  |  74 | 0.785 |
-| EM corporate plus USD OAS change (bp)   | ai_earnings_shock          | no         | -6.272 (6.033)    | -1.04 | 0.299 |  74 | 0.011 |
-| EM corporate plus USD OAS change (bp)   | ai_earnings_shock          | yes        | 0.502 (4.392)     |  0.11 | 0.909 |  74 | 0.799 |
-| EM high-yield USD OAS change (bp)       | ai_earnings_shock          | no         | -11.093 (10.811)  | -1.03 | 0.305 |  74 | 0.01  |
-| EM high-yield USD OAS change (bp)       | ai_earnings_shock          | yes        | 4.191 (9.083)     |  0.46 | 0.645 |  74 | 0.73  |
-| US high-yield OAS (placebo) change (bp) | ai_earnings_shock          | no         | 3.344 (10.504)    |  0.32 | 0.75  |  74 | 0.001 |
-| US high-yield OAS (placebo) change (bp) | ai_earnings_shock          | yes        | 24.091 (9.004)    |  2.68 | 0.007 |  74 | 0.753 |
-| EM USD sovereign bond ETF return (%)    | hyperscaler_earnings_shock | no         | -0.728 (0.990)    | -0.73 | 0.462 |  63 | 0.008 |
-| EM USD sovereign bond ETF return (%)    | hyperscaler_earnings_shock | yes        | 0.221 (0.405)     |  0.55 | 0.585 |  63 | 0.85  |
-| EM sovereign debt ETF return (%)        | hyperscaler_earnings_shock | no         | -1.337 (1.469)    | -0.91 | 0.363 |  63 | 0.017 |
-| EM sovereign debt ETF return (%)        | hyperscaler_earnings_shock | yes        | -0.138 (0.736)    | -0.19 | 0.851 |  63 | 0.8   |
-| EM high-yield bond ETF return (%)       | hyperscaler_earnings_shock | no         | -0.283 (0.904)    | -0.31 | 0.754 |  63 | 0.002 |
-| EM high-yield bond ETF return (%)       | hyperscaler_earnings_shock | yes        | 0.249 (0.543)     |  0.46 | 0.646 |  63 | 0.653 |
-| EM local-currency bond ETF return (%)   | hyperscaler_earnings_shock | no         | -0.552 (1.136)    | -0.49 | 0.627 |  63 | 0.004 |
-| EM local-currency bond ETF return (%)   | hyperscaler_earnings_shock | yes        | -0.044 (0.506)    | -0.09 | 0.931 |  63 | 0.781 |
-| EM equity ETF return (%)                | hyperscaler_earnings_shock | no         | 1.088 (2.694)     |  0.4  | 0.686 |  63 | 0.003 |
-| EM equity ETF return (%)                | hyperscaler_earnings_shock | yes        | 1.500 (1.663)     |  0.9  | 0.367 |  63 | 0.767 |
-| EM public-sector OAS change (bp)        | hyperscaler_earnings_shock | no         | -15.417 (9.027)   | -1.71 | 0.088 |  44 | 0.063 |
-| EM public-sector OAS change (bp)        | hyperscaler_earnings_shock | yes        | -8.898 (4.289)    | -2.07 | 0.038 |  44 | 0.835 |
-| EM corporate plus USD OAS change (bp)   | hyperscaler_earnings_shock | no         | -18.096 (10.134)  | -1.79 | 0.074 |  44 | 0.064 |
-| EM corporate plus USD OAS change (bp)   | hyperscaler_earnings_shock | yes        | -10.143 (5.459)   | -1.86 | 0.063 |  44 | 0.849 |
-| EM high-yield USD OAS change (bp)       | hyperscaler_earnings_shock | no         | -28.038 (18.577)  | -1.51 | 0.131 |  44 | 0.044 |
-| EM high-yield USD OAS change (bp)       | hyperscaler_earnings_shock | yes        | -13.512 (12.192)  | -1.11 | 0.268 |  44 | 0.762 |
-| US high-yield OAS (placebo) change (bp) | hyperscaler_earnings_shock | no         | -6.581 (18.218)   | -0.36 | 0.718 |  44 | 0.002 |
-| US high-yield OAS (placebo) change (bp) | hyperscaler_earnings_shock | yes        | 21.289 (14.282)   |  1.49 | 0.136 |  44 | 0.793 |
-| EM USD sovereign bond ETF return (%)    | capex_surprise_assets      | no         | -8.414 (6.135)    | -1.37 | 0.17  |  97 | 0.012 |
-| EM USD sovereign bond ETF return (%)    | capex_surprise_assets      | yes        | -4.298 (3.066)    | -1.4  | 0.161 |  97 | 0.848 |
-| EM sovereign debt ETF return (%)        | capex_surprise_assets      | no         | -8.637 (7.816)    | -1.11 | 0.269 |  97 | 0.008 |
-| EM sovereign debt ETF return (%)        | capex_surprise_assets      | yes        | -3.535 (4.733)    | -0.75 | 0.455 |  97 | 0.807 |
-| EM high-yield bond ETF return (%)       | capex_surprise_assets      | no         | -12.392 (5.604)   | -2.21 | 0.027 |  97 | 0.038 |
-| EM high-yield bond ETF return (%)       | capex_surprise_assets      | yes        | -7.649 (3.981)    | -1.92 | 0.055 |  97 | 0.681 |
-| EM local-currency bond ETF return (%)   | capex_surprise_assets      | no         | -13.148 (6.891)   | -1.91 | 0.056 |  97 | 0.027 |
-| EM local-currency bond ETF return (%)   | capex_surprise_assets      | yes        | -8.609 (3.306)    | -2.6  | 0.009 |  97 | 0.819 |
-| EM equity ETF return (%)                | capex_surprise_assets      | no         | -35.474 (14.265)  | -2.49 | 0.013 |  97 | 0.033 |
-| EM equity ETF return (%)                | capex_surprise_assets      | yes        | -15.462 (7.382)   | -2.09 | 0.036 |  97 | 0.72  |
-| EM public-sector OAS change (bp)        | capex_surprise_assets      | no         | 26.054 (72.106)   |  0.36 | 0.718 |  69 | 0.002 |
-| EM public-sector OAS change (bp)        | capex_surprise_assets      | yes        | 66.998 (37.952)   |  1.77 | 0.078 |  69 | 0.8   |
-| EM corporate plus USD OAS change (bp)   | capex_surprise_assets      | no         | 12.407 (75.695)   |  0.16 | 0.87  |  69 | 0     |
-| EM corporate plus USD OAS change (bp)   | capex_surprise_assets      | yes        | 43.260 (38.888)   |  1.11 | 0.266 |  69 | 0.807 |
-| EM high-yield USD OAS change (bp)       | capex_surprise_assets      | no         | 46.687 (115.825)  |  0.4  | 0.687 |  69 | 0.002 |
-| EM high-yield USD OAS change (bp)       | capex_surprise_assets      | yes        | 56.753 (55.731)   |  1.02 | 0.309 |  69 | 0.728 |
-| US high-yield OAS (placebo) change (bp) | capex_surprise_assets      | no         | 183.553 (115.122) |  1.59 | 0.111 |  69 | 0.022 |
-| US high-yield OAS (placebo) change (bp) | capex_surprise_assets      | yes        | 148.723 (63.377)  |  2.35 | 0.019 |  69 | 0.729 |
+| outcome                                 | shock                        | controls   | coef (se)         |     t |     p |   n |    r2 |
+|:----------------------------------------|:-----------------------------|:-----------|:------------------|------:|------:|----:|------:|
+| EM USD sovereign bond ETF return (%)    | ai_earnings_shock            | no         | 0.095 (0.724)     |  0.13 | 0.896 | 106 | 0     |
+| EM USD sovereign bond ETF return (%)    | ai_earnings_shock            | yes        | -0.096 (0.419)    | -0.23 | 0.82  | 106 | 0.816 |
+| EM sovereign debt ETF return (%)        | ai_earnings_shock            | no         | 0.033 (1.008)     |  0.03 | 0.974 | 106 | 0     |
+| EM sovereign debt ETF return (%)        | ai_earnings_shock            | yes        | -0.318 (0.602)    | -0.53 | 0.598 | 106 | 0.776 |
+| EM high-yield bond ETF return (%)       | ai_earnings_shock            | no         | 0.283 (0.614)     |  0.46 | 0.645 | 106 | 0.002 |
+| EM high-yield bond ETF return (%)       | ai_earnings_shock            | yes        | -0.115 (0.482)    | -0.24 | 0.812 | 106 | 0.63  |
+| EM local-currency bond ETF return (%)   | ai_earnings_shock            | no         | -0.224 (0.745)    | -0.3  | 0.763 | 106 | 0.001 |
+| EM local-currency bond ETF return (%)   | ai_earnings_shock            | yes        | -0.230 (0.367)    | -0.63 | 0.531 | 106 | 0.8   |
+| EM equity ETF return (%)                | ai_earnings_shock            | no         | 2.763 (1.975)     |  1.4  | 0.162 | 106 | 0.018 |
+| EM equity ETF return (%)                | ai_earnings_shock            | yes        | 2.335 (1.385)     |  1.69 | 0.092 | 106 | 0.725 |
+| EM public-sector OAS change (bp)        | ai_earnings_shock            | no         | -5.283 (5.430)    | -0.97 | 0.331 |  74 | 0.01  |
+| EM public-sector OAS change (bp)        | ai_earnings_shock            | yes        | 0.357 (3.544)     |  0.1  | 0.92  |  74 | 0.785 |
+| EM corporate plus USD OAS change (bp)   | ai_earnings_shock            | no         | -6.272 (6.033)    | -1.04 | 0.299 |  74 | 0.011 |
+| EM corporate plus USD OAS change (bp)   | ai_earnings_shock            | yes        | 0.502 (4.392)     |  0.11 | 0.909 |  74 | 0.799 |
+| EM high-yield USD OAS change (bp)       | ai_earnings_shock            | no         | -11.093 (10.811)  | -1.03 | 0.305 |  74 | 0.01  |
+| EM high-yield USD OAS change (bp)       | ai_earnings_shock            | yes        | 4.191 (9.083)     |  0.46 | 0.645 |  74 | 0.73  |
+| US high-yield OAS (placebo) change (bp) | ai_earnings_shock            | no         | 3.344 (10.504)    |  0.32 | 0.75  |  74 | 0.001 |
+| US high-yield OAS (placebo) change (bp) | ai_earnings_shock            | yes        | 24.091 (9.004)    |  2.68 | 0.007 |  74 | 0.753 |
+| EM USD sovereign bond ETF return (%)    | hyperscaler_earnings_shock   | no         | -0.728 (0.990)    | -0.73 | 0.462 |  63 | 0.008 |
+| EM USD sovereign bond ETF return (%)    | hyperscaler_earnings_shock   | yes        | 0.221 (0.405)     |  0.55 | 0.585 |  63 | 0.85  |
+| EM sovereign debt ETF return (%)        | hyperscaler_earnings_shock   | no         | -1.337 (1.469)    | -0.91 | 0.363 |  63 | 0.017 |
+| EM sovereign debt ETF return (%)        | hyperscaler_earnings_shock   | yes        | -0.138 (0.736)    | -0.19 | 0.851 |  63 | 0.8   |
+| EM high-yield bond ETF return (%)       | hyperscaler_earnings_shock   | no         | -0.283 (0.904)    | -0.31 | 0.754 |  63 | 0.002 |
+| EM high-yield bond ETF return (%)       | hyperscaler_earnings_shock   | yes        | 0.249 (0.543)     |  0.46 | 0.646 |  63 | 0.653 |
+| EM local-currency bond ETF return (%)   | hyperscaler_earnings_shock   | no         | -0.552 (1.136)    | -0.49 | 0.627 |  63 | 0.004 |
+| EM local-currency bond ETF return (%)   | hyperscaler_earnings_shock   | yes        | -0.044 (0.506)    | -0.09 | 0.931 |  63 | 0.781 |
+| EM equity ETF return (%)                | hyperscaler_earnings_shock   | no         | 1.088 (2.694)     |  0.4  | 0.686 |  63 | 0.003 |
+| EM equity ETF return (%)                | hyperscaler_earnings_shock   | yes        | 1.500 (1.663)     |  0.9  | 0.367 |  63 | 0.767 |
+| EM public-sector OAS change (bp)        | hyperscaler_earnings_shock   | no         | -15.417 (9.027)   | -1.71 | 0.088 |  44 | 0.063 |
+| EM public-sector OAS change (bp)        | hyperscaler_earnings_shock   | yes        | -8.898 (4.289)    | -2.07 | 0.038 |  44 | 0.835 |
+| EM corporate plus USD OAS change (bp)   | hyperscaler_earnings_shock   | no         | -18.096 (10.134)  | -1.79 | 0.074 |  44 | 0.064 |
+| EM corporate plus USD OAS change (bp)   | hyperscaler_earnings_shock   | yes        | -10.143 (5.459)   | -1.86 | 0.063 |  44 | 0.849 |
+| EM high-yield USD OAS change (bp)       | hyperscaler_earnings_shock   | no         | -28.038 (18.577)  | -1.51 | 0.131 |  44 | 0.044 |
+| EM high-yield USD OAS change (bp)       | hyperscaler_earnings_shock   | yes        | -13.512 (12.192)  | -1.11 | 0.268 |  44 | 0.762 |
+| US high-yield OAS (placebo) change (bp) | hyperscaler_earnings_shock   | no         | -6.581 (18.218)   | -0.36 | 0.718 |  44 | 0.002 |
+| US high-yield OAS (placebo) change (bp) | hyperscaler_earnings_shock   | yes        | 21.289 (14.282)   |  1.49 | 0.136 |  44 | 0.793 |
+| EM USD sovereign bond ETF return (%)    | capex_surprise_assets        | no         | -8.414 (6.135)    | -1.37 | 0.17  |  97 | 0.012 |
+| EM USD sovereign bond ETF return (%)    | capex_surprise_assets        | yes        | -4.298 (3.066)    | -1.4  | 0.161 |  97 | 0.848 |
+| EM sovereign debt ETF return (%)        | capex_surprise_assets        | no         | -8.637 (7.816)    | -1.11 | 0.269 |  97 | 0.008 |
+| EM sovereign debt ETF return (%)        | capex_surprise_assets        | yes        | -3.535 (4.733)    | -0.75 | 0.455 |  97 | 0.807 |
+| EM high-yield bond ETF return (%)       | capex_surprise_assets        | no         | -12.392 (5.604)   | -2.21 | 0.027 |  97 | 0.038 |
+| EM high-yield bond ETF return (%)       | capex_surprise_assets        | yes        | -7.649 (3.981)    | -1.92 | 0.055 |  97 | 0.681 |
+| EM local-currency bond ETF return (%)   | capex_surprise_assets        | no         | -13.148 (6.891)   | -1.91 | 0.056 |  97 | 0.027 |
+| EM local-currency bond ETF return (%)   | capex_surprise_assets        | yes        | -8.609 (3.306)    | -2.6  | 0.009 |  97 | 0.819 |
+| EM equity ETF return (%)                | capex_surprise_assets        | no         | -35.474 (14.265)  | -2.49 | 0.013 |  97 | 0.033 |
+| EM equity ETF return (%)                | capex_surprise_assets        | yes        | -15.462 (7.382)   | -2.09 | 0.036 |  97 | 0.72  |
+| EM public-sector OAS change (bp)        | capex_surprise_assets        | no         | 26.054 (72.106)   |  0.36 | 0.718 |  69 | 0.002 |
+| EM public-sector OAS change (bp)        | capex_surprise_assets        | yes        | 66.998 (37.952)   |  1.77 | 0.078 |  69 | 0.8   |
+| EM corporate plus USD OAS change (bp)   | capex_surprise_assets        | no         | 12.407 (75.695)   |  0.16 | 0.87  |  69 | 0     |
+| EM corporate plus USD OAS change (bp)   | capex_surprise_assets        | yes        | 43.260 (38.888)   |  1.11 | 0.266 |  69 | 0.807 |
+| EM high-yield USD OAS change (bp)       | capex_surprise_assets        | no         | 46.687 (115.825)  |  0.4  | 0.687 |  69 | 0.002 |
+| EM high-yield USD OAS change (bp)       | capex_surprise_assets        | yes        | 56.753 (55.731)   |  1.02 | 0.309 |  69 | 0.728 |
+| US high-yield OAS (placebo) change (bp) | capex_surprise_assets        | no         | 183.553 (115.122) |  1.59 | 0.111 |  69 | 0.022 |
+| US high-yield OAS (placebo) change (bp) | capex_surprise_assets        | yes        | 148.723 (63.377)  |  2.35 | 0.019 |  69 | 0.729 |
+| EM USD sovereign bond ETF return (%)    | supplier_implied_capex_shock | no         | 3.184 (2.703)     |  1.18 | 0.239 |  63 | 0.011 |
+| EM USD sovereign bond ETF return (%)    | supplier_implied_capex_shock | yes        | -2.401 (1.836)    | -1.31 | 0.191 |  63 | 0.854 |
+| EM sovereign debt ETF return (%)        | supplier_implied_capex_shock | no         | 5.272 (3.558)     |  1.48 | 0.138 |  63 | 0.018 |
+| EM sovereign debt ETF return (%)        | supplier_implied_capex_shock | yes        | -2.281 (2.380)    | -0.96 | 0.338 |  63 | 0.802 |
+| EM high-yield bond ETF return (%)       | supplier_implied_capex_shock | no         | 5.028 (2.694)     |  1.87 | 0.062 |  63 | 0.036 |
+| EM high-yield bond ETF return (%)       | supplier_implied_capex_shock | yes        | -1.576 (2.156)    | -0.73 | 0.465 |  63 | 0.655 |
+| EM local-currency bond ETF return (%)   | supplier_implied_capex_shock | no         | -0.722 (3.097)    | -0.23 | 0.816 |  63 | 0     |
+| EM local-currency bond ETF return (%)   | supplier_implied_capex_shock | yes        | -4.912 (2.471)    | -1.99 | 0.047 |  63 | 0.798 |
+| EM equity ETF return (%)                | supplier_implied_capex_shock | no         | 31.575 (9.475)    |  3.33 | 0.001 |  63 | 0.15  |
+| EM equity ETF return (%)                | supplier_implied_capex_shock | yes        | 10.640 (7.416)    |  1.43 | 0.151 |  63 | 0.776 |
+| EM public-sector OAS change (bp)        | supplier_implied_capex_shock | no         | -42.305 (28.688)  | -1.47 | 0.14  |  44 | 0.047 |
+| EM public-sector OAS change (bp)        | supplier_implied_capex_shock | yes        | -18.081 (17.134)  | -1.06 | 0.291 |  44 | 0.826 |
+| EM corporate plus USD OAS change (bp)   | supplier_implied_capex_shock | no         | -57.752 (32.605)  | -1.77 | 0.077 |  44 | 0.066 |
+| EM corporate plus USD OAS change (bp)   | supplier_implied_capex_shock | yes        | -11.975 (15.251)  | -0.79 | 0.432 |  44 | 0.837 |
+| EM high-yield USD OAS change (bp)       | supplier_implied_capex_shock | no         | -113.121 (62.776) | -1.8  | 0.072 |  44 | 0.073 |
+| EM high-yield USD OAS change (bp)       | supplier_implied_capex_shock | yes        | 2.534 (29.099)    |  0.09 | 0.931 |  44 | 0.755 |
+| US high-yield OAS (placebo) change (bp) | supplier_implied_capex_shock | no         | -137.747 (61.915) | -2.22 | 0.026 |  44 | 0.079 |
+| US high-yield OAS (placebo) change (bp) | supplier_implied_capex_shock | yes        | 74.558 (36.717)   |  2.03 | 0.042 |  44 | 0.794 |
 
 ## B. All trading days since October 2022 (daily AI factor)
 

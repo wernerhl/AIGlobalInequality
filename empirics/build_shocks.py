@@ -28,6 +28,7 @@ from common import AI_FIRMS, AI_SUPPLY_CHAIN_EXTRA, OUT, PROC
 EVENT_START = "2022-10-01"   # first earnings season after ChatGPT (30 Nov 2022) is 2023Q1;
                              # start one season earlier for a pre-period.
 EST_WINDOW = (-250, -21)
+HYP = ["MSFT", "GOOGL", "AMZN", "META", "ORCL"]
 EVENT_WINDOW = (0, 1)
 
 
@@ -76,6 +77,23 @@ def abnormal_returns(ret, ff, ticker, day):
     return ar.sum(), ar.iloc[0], ar.iloc[-1] if len(ar) > 1 else np.nan
 
 
+SUPPLIERS_BASKET = ["NVDA", "AVGO", "AMD", "TSM", "VRT", "ANET", "SMCI", "MU", "ASML"]
+
+
+def supplier_implied_shock(ret, ff, day, exclude):
+    """Two-day CAR of the AI supply-chain basket on a hyperscaler's reaction day.
+
+    Hyperscaler capex guidance moves the suppliers' expected revenues, so the suppliers'
+    abnormal return on the hyperscaler's announcement day is a market-based,
+    forward-looking proxy for the capex-guidance surprise (which consensus data would
+    measure directly). Suppliers reporting on the same day are excluded.
+    """
+    names = [t for t in SUPPLIERS_BASKET if t in ret and t not in exclude]
+    cars = [abnormal_returns(ret, ff, t, day)[0] for t in names]
+    cars = [c for c in cars if pd.notna(c)]
+    return float(np.mean(cars)) if cars else np.nan
+
+
 def capex_surprise(q):
     """Seasonal random walk with drift, scaled by lagged assets; also YoY growth."""
     out = []
@@ -113,13 +131,16 @@ def build_events(ret, ff, q, e, k8):
     cars = [abnormal_returns(ret, ff, t, d) for t, d in zip(e["ticker"], e["event_day"])]
     e[["car_0_1", "ar_0", "ar_1"]] = pd.DataFrame(cars, index=e.index)
     e["raw_ret_0_1"] = [ret[t].loc[d:].iloc[:2].sum() for t, d in zip(e["ticker"], e["event_day"])]
+    same_day = e.groupby("event_day")["ticker"].apply(set).to_dict()
+    e["supplier_car_0_1"] = [supplier_implied_shock(ret, ff, d, same_day[d]) if t in HYP else np.nan
+                             for t, d in zip(e["ticker"], e["event_day"])]
     e["spy_ret_0_1"] = [ret["SPY"].loc[d:].iloc[:2].sum() for d in e["event_day"]]
-    e["is_hyperscaler"] = e["ticker"].isin(["MSFT", "GOOGL", "AMZN", "META", "ORCL"])
+    e["is_hyperscaler"] = e["ticker"].isin(HYP)
     cols = ["ticker", "is_hyperscaler", "earnings_date", "event_day", "filing_8k", "period_end",
             "eps_estimate", "reported_eps", "surprisepct", "capex", "capex_forecast",
             "capex_surprise", "capex_surprise_assets", "capex_yoy_growth", "capex_to_cfo",
             "capex_to_dep", "revenue", "op_income", "car_0_1", "ar_0", "ar_1", "raw_ret_0_1",
-            "spy_ret_0_1"]
+            "spy_ret_0_1", "supplier_car_0_1"]
     return e[cols].sort_values(["event_day", "ticker"]).reset_index(drop=True), qs
 
 
@@ -158,7 +179,8 @@ def main():
     hyp = events[events["is_hyperscaler"]].groupby("event_day")["car_0_1"].mean() \
         .rename("hyperscaler_earnings_shock")
     cap = events.groupby("event_day")["capex_surprise_assets"].mean().rename("capex_surprise_assets")
-    shocks = pd.concat([daily, hyp, cap], axis=1).reindex(ret.index)
+    sup = events.groupby("event_day")["supplier_car_0_1"].mean().rename("supplier_implied_capex_shock")
+    shocks = pd.concat([daily, hyp, cap, sup], axis=1).reindex(ret.index)
     shocks["n_reporting"] = events.groupby("event_day").size().reindex(ret.index).fillna(0).astype(int)
     shocks = shocks.join(f[["ai_minus_mkt", "ai_ff_resid"]])
     shocks.index.name = "date"
