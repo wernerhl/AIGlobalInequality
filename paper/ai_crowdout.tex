@@ -1,0 +1,206 @@
+\documentclass[AER]{AEA}
+\usepackage{natbib}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\draftSpacing{1.5}
+
+\newtheorem{proposition}{Proposition}
+\newcommand{\sA}{s_A}
+\newcommand{\sD}{s_D}
+
+\begin{document}
+
+\title{AI Capital and the Crowding Out of Development Investment: A Model of Global Inequality}
+\shortTitle{AI Capital and Development Investment}
+\author{Werner Hernani-Limarino\thanks{Hernani-Limarino: AI Analytics and Bolivian Academy of Economic Sciences (wernerhl@gmail.com).}}
+\date{\today}
+\pubMonth{Month}
+\pubYear{Year}
+\pubVolume{Vol}
+\pubIssue{Issue}
+\JEL{F21, F35, O15, O33, D63}
+\Keywords{artificial intelligence, capital allocation, official development assistance, skill premium, global inequality}
+
+\begin{abstract}
+This paper asks whether the investment boom in artificial intelligence raises global inequality through the allocation of capital as well as through labor markets. In a two-sector model, AI capital complements skilled labor and development capital (health, schooling, infrastructure, climate adaptation and humanitarian capacity) complements unskilled labor, both are financed from a common pool, and funders appropriate only part of the return to development capital. An AI productivity shock raises the hurdle rate on all investment and reduces development capital unless AI raises development productivity by more than a threshold that rises with AI's portfolio share. The crowding out adds a third term to the global skill premium and can lower inequality-weighted world welfare, and even unweighted output, despite the technological gain.
+\end{abstract}
+
+\maketitle
+
+The research question of this paper is whether a technology shock whose direct returns accrue to the skilled part of the world population can reduce the investment whose returns accrue to the unskilled part, and through that reallocation raise global inequality by more than the wage effects of the technology alone. The question arises from two facts that coincide in time. According to the preliminary figures of the OECD Development Assistance Committee, official development assistance (ODA) fell by 23.1 percent in real terms in 2025, to USD 174.3 billion, the largest annual decline on record, with humanitarian assistance falling by 35.8 percent and a further decline of 5.8 percent projected for 2026 \citep{OECD2026ODA}. Over the same period the five largest technology firms raised capital expenditure, driven mainly by AI infrastructure, to between USD 803 and 828 billion for calendar year 2026 \citep{BI2026capex}, which is between four and five times the entire ODA budget of the DAC members.
+
+The coincidence admits three explanations, which the model is built to separate. The first attributes the fall in development finance to donor politics that are independent of AI, a reading supported by the concentration of the 2025 decline in a single donor, the United States, whose cuts accounted for about three quarters of the total. The second, which is the mechanism formalized here, holds that AI raises the return that any marginal dollar must earn, so that development investment, whose returns are poorly appropriable by those who finance it, loses the competition for a common pool of funds that includes private capital, development finance institutions and the fiscal space of donor governments. The third, which may be called the AI-for-development view, holds that AI raises the productivity of investment in poor economies (diagnostics, agricultural extension, weather forecasting, education software) by enough to attract more capital toward them. The three explanations have different implications for how development finance responds to AI return shocks, for the composition of the decline across financing vehicles and sectors, and for the cost of capital faced by low-income countries, and Section IV states these implications as testable predictions.
+
+The analysis connects three bodies of work. The literature on skill-biased and task-based technical change studies how new technologies raise the skill premium within countries through labor demand \citep{AcemogluAutor2011,AcemogluRestrepo2018}, and recent work applies this framework to the aggregate effects of AI \citep{Acemoglu2025}. \citet{KorinekStiglitz2021} argue that AI may reverse the development path of labor-abundant economies by eroding their comparative advantage in labor-intensive production, a channel that operates through labor demand and the terms of trade. The literature on international capital flows documents that capital does not flow to poor countries in the amounts implied by differences in the marginal product of capital \citep{Lucas1990,CaselliFeyrer2007} and that, among developing countries, capital flows are negatively correlated with productivity growth \citep{GourinchasJeanne2013}. The contribution of this paper is a capital-allocation channel that links the two literatures: when the return to AI capital rises and the funding pool is shared, the allocation of capital moves away from assets that complement unskilled labor, and this movement adds to the inequality produced by the wage effects of AI. Because the market allocation already undervalues development capital, the reallocation has a first-order welfare cost, which is the logic of immiserizing growth under distortions \citep{Bhagwati1968} applied to a technology shock with distributional incidence.
+
+\section{The Model}
+
+\subsection{Population, technology and incidence}
+
+The world population consists of a skilled group of mass $H$ and an unskilled group of mass $L$, both supplied inelastically. Skilled workers are concentrated in the economies that produce and adopt AI, and unskilled workers are concentrated in low-income economies, although the model does not require a geographic split. There are two types of capital. AI capital $K_A$ comprises data centers, chips, energy capacity and the models trained on them, and development capital $K_D$ comprises health systems, schooling, basic infrastructure, climate adaptation and humanitarian capacity. Output in the two sectors is
+\begin{equation}\label{eq:tech}
+Y_A = A\,K_A^{\alpha}H^{1-\alpha}, \qquad Y_D = B\,K_D^{\beta}L^{1-\beta},
+\end{equation}
+with $\alpha,\beta\in(0,1)$. AI capital complements skilled labor and development capital complements unskilled labor, which is the sense in which the returns to the first accrue to the skilled part of the population and the returns to the second accrue to the unskilled part. Factor markets are competitive, so that wages are $w_H=(1-\alpha)Y_A/H$ and $w_L=(1-\beta)Y_D/L$, and the marginal products of capital are $\mathrm{MPK}_A=\alpha Y_A/K_A$ and $\mathrm{MPK}_D=\beta Y_D/K_D$.
+
+The central friction is the appropriability of returns to development capital. The funder of a unit of AI capital receives its full marginal product, whereas the funder of a unit of development capital receives only a fraction $\phi\in(0,1]$ of it, with the remaining fraction $1-\phi$ accruing to the unskilled population as non-excludable benefits (lower mortality, higher learning, avoided disaster losses). For private development finance, $\phi$ measures the share of the social return that can be collected through user fees, debt service or equity returns; for grant ODA, $\phi$ measures the strategic, commercial or political return that donor governments require to justify the allocation at the margin. Low appropriability is the defining property of humanitarian and climate adaptation spending, for which $\phi$ is close to zero.
+
+\subsection{The funding pool and equilibrium}
+
+All capital is owned by a group of funders, who are part of the skilled population and the governments that represent it. The pool of funds is $F=K_A+K_D$, with supply $F=F_0\,r^{\varepsilon}$, where $r$ is the required return and $\varepsilon\ge 0$ is the elasticity of the pool with respect to that return. The case $\varepsilon=0$ describes a fixed pool, such as a donor budget set by fiscal rules or an institutional portfolio with a fixed allocation to alternative assets. Funders allocate the pool until private returns are equal,
+\begin{equation}\label{eq:arb}
+r=\mathrm{MPK}_A=\phi\,\mathrm{MPK}_D .
+\end{equation}
+Since $\phi<1$, the market equilibrium equates the social return to AI capital with only a fraction $\phi$ of the social return to development capital, so that development capital is underprovided before any shock occurs.
+
+AI progress is represented by an increase in $A$. To allow for the AI-for-development view, the same progress may raise the productivity of development capital, with $d\ln B=\theta\, d\ln A$ and $\theta\ge 0$. The parameter $\theta$ is the spillover from AI to the sectors of the poor; $\theta=1$ means that AI raises development productivity in the same proportion as AI productivity.
+
+Let $\sA=K_A/F$ and $\sD=K_D/F$ denote the portfolio shares, $k=K_A/K_D=\sA/\sD$, and define $a=\sA/(1-\alpha)$ and $d=\sD/(1-\beta)$. Using $\hat{v}$ for $d\ln v/d\ln A$, the equilibrium responses to the shock follow from log-differentiating \eqref{eq:arb} and the pool constraint, as derived in Appendix A:
+\begin{equation}\label{eq:rho}
+\hat{r}=\frac{a+d\,\theta}{\varepsilon+a+d},\qquad
+\hat{K}_A=\frac{1-\hat{r}}{1-\alpha},\qquad
+\hat{K}_D=\frac{\theta(\varepsilon+a)-a}{(1-\beta)(\varepsilon+a+d)} .
+\end{equation}
+
+\section{Results}
+
+\subsection{Crowding out}
+
+\begin{proposition}[Crowding out of development capital]\label{prop:crowd}
+An AI productivity shock raises the required return on all capital, $\hat{r}>0$, and reduces development capital, $\hat{K}_D<0$, if and only if
+\begin{equation}\label{eq:theta}
+\theta<\theta^{*}\equiv\frac{\sA}{\sA+\varepsilon(1-\alpha)} .
+\end{equation}
+The threshold $\theta^{*}$ increases with the portfolio share of AI capital and decreases with the elasticity of the funding pool. With a fixed pool, $\theta^{*}=1$, and with $\theta=0$ the proportional loss of development capital, $|\hat{K}_D|=1/[(1-\beta)(1+d/a)]$, increases with $\sA$.
+\end{proposition}
+
+The proposition states that crowding out is the default outcome. With a fixed pool, development capital falls unless AI raises the productivity of the sectors of the poor in the same proportion as it raises its own, and when the pool expands with the return, the required spillover is smaller but grows as AI absorbs a larger share of the portfolio. The last property implies that the crowding out intensifies as the AI boom proceeds, because each further increase in $\sA$ raises both the threshold and the proportional loss of development capital. Since $\hat{K}_D$ does not depend on $\phi$, the size of the reallocation is the same for highly and poorly appropriable development investment, while its welfare cost, examined below, depends on $\phi$.
+
+The model also implies a composition effect when development capital consists of several types $j$ with capital elasticities $\beta_j$ and a common appropriability. With $\theta=0$, each type responds according to $\hat{K}_{D,j}=-\hat{r}/(1-\beta_j)$, so that the most capital-intensive forms of development investment, such as climate adaptation infrastructure and energy access, contract by more than labor-intensive services such as primary health care and schooling.
+
+\subsection{The global skill premium}
+
+\begin{proposition}[Decomposition of the skill premium]\label{prop:prem}
+The response of the global skill premium to the AI shock is
+\begin{equation}\label{eq:prem}
+\widehat{\left(\frac{w_H}{w_L}\right)}
+=\underbrace{(1-\theta)}_{\text{skill bias}}
++\underbrace{\alpha\,\hat{K}_A}_{\text{AI capital deepening}}
++\underbrace{(-\beta\,\hat{K}_D)}_{\text{crowding out}} .
+\end{equation}
+If $\theta<\min\{\theta^{*},1\}$, all three terms are positive and the premium rises by more than the direct skill bias of the technology.
+\end{proposition}
+
+The first term is the direct effect studied in the literature on skill-biased technical change, the second is the capital deepening that the higher return attracts into the AI sector, and the third is the reduction in the productivity of unskilled labor caused by the reallocation of capital away from the sectors in which it works. The third term is the contribution of this paper, and it has no counterpart in a one-sector model or in a model in which development capital is financed from a separate budget. With the illustrative values used in Table~\ref{tab:cs}, in which the AI share of the pool is 0.8, the pool is fixed and $\theta=0$, a one percent increase in AI productivity raises AI capital by 0.30 percent, lowers development capital by 1.21 percent, raises skilled wages by 1.15 percent and lowers unskilled wages by 0.36 percent, so that the premium rises by 1.52 percent, of which about one quarter is due to crowding out.
+
+\begin{table}
+\caption{Comparative statics of a one percent AI productivity shock}\label{tab:cs}
+\begin{tabular}{ccccccccc}
+\toprule
+$\sA$ & $\varepsilon$ & $\theta$ & $\hat{r}$ & $\hat{K}_A$ & $\hat{K}_D$ & $\hat{w}_H$ & $\hat{w}_L$ & $\widehat{w_H/w_L}$ \\
+\midrule
+0.5 & 0 & 0 & 0.58 & 0.83 & $-0.83$ & 1.42 & $-0.25$ & 1.67 \\
+0.8 & 0 & 0 & 0.85 & 0.30 & $-1.21$ & 1.15 & $-0.36$ & 1.52 \\
+0.9 & 0 & 0 & 0.93 & 0.15 & $-1.32$ & 1.07 & $-0.40$ & 1.47 \\
+0.8 & 0.5 & 0 & 0.67 & 0.66 & $-0.96$ & 1.33 & $-0.29$ & 1.62 \\
+0.8 & 2 & 0 & 0.41 & 1.18 & $-0.59$ & 1.59 & $-0.18$ & 1.76 \\
+0.8 & 0 & 0.5 & 0.92 & 0.15 & $-0.61$ & 1.08 & 0.32 & 0.76 \\
+0.8 & 2 & 0.5 & 0.45 & 1.10 & 0.07 & 1.55 & 0.52 & 1.03 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+Entries are elasticities with respect to $A$ from equations \eqref{eq:rho} and \eqref{eq:prem}, with $\alpha=0.5$ and $\beta=0.3$. Parameter values are chosen for illustration. The last row is the only case in which $\theta>\theta^{*}$ ($\theta^{*}=0.44$) and development capital rises.
+\end{tablenotes}
+\end{table}
+
+Table~\ref{tab:cs} also shows that a more elastic pool reduces the crowding out of development capital and raises the investment response of AI capital, so that the skill premium rises by more when the pool is elastic. Elastic funding therefore protects the level of development capital without protecting the relative position of unskilled workers, because it allows the AI sector to expand without drawing on the other sector.
+
+\subsection{Welfare}
+
+To evaluate the reallocation, let the planner attach a weight of one to the income of the skilled group and its funders and a weight $\lambda\ge1$ to the income of the unskilled group. Under constant relative risk aversion $\gamma$ and per capita incomes $c_H$ and $c_L$, the weight is $\lambda=(c_H/c_L)^{\gamma}$, which corresponds to the generalized social marginal welfare weights of \citet{SaezStantcheva2016}. The income of the skilled group is $I_H=(1-\alpha)Y_A+rK_A+rK_D=Y_A+\phi\beta Y_D$, and the income of the unskilled group is $I_L=(1-\beta)Y_D+(1-\phi)\beta Y_D=(1-\phi\beta)Y_D$. Define $\Lambda=\phi\beta+\lambda(1-\phi\beta)$, the average welfare weight on a unit of output of the development sector.
+
+\begin{proposition}[Welfare]\label{prop:welf}
+The first-order change in weighted world welfare, relative to AI-sector output, is
+\begin{equation}\label{eq:welf}
+\frac{dW}{Y_A\,d\ln A}=1+\alpha\hat{K}_A+\frac{\alpha}{\phi\beta k}\,\Lambda\,\bigl(\theta+\beta\hat{K}_D\bigr).
+\end{equation}
+(i) With equal weights ($\lambda=1$) and a fixed pool ($\varepsilon=0$), equation \eqref{eq:welf} reduces to $1+(\alpha/k)(1/\phi-1)\hat{K}_D+(\alpha\theta/\phi\beta k)$, so that world output falls when $\theta=0$ and $(1/\phi-1)(\alpha/k)|\hat{K}_D|>1$. (ii) For any $\theta$ such that $\theta+\beta\hat{K}_D<0$, welfare falls if and only if $\lambda>\lambda^{*}$, where
+\begin{equation}\label{eq:lamstar}
+\lambda^{*}=\frac{\Lambda^{*}-\phi\beta}{1-\phi\beta},\qquad
+\Lambda^{*}=\frac{\phi\beta k\,(1+\alpha\hat{K}_A)}{\alpha\,|\theta+\beta\hat{K}_D|} .
+\end{equation}
+The threshold $\lambda^{*}$ increases with $\phi$ whenever $k(1+\alpha\hat{K}_A)>\alpha|\theta+\beta\hat{K}_D|$, so that the less appropriable the returns to development capital, the smaller the inequality aversion at which the AI shock lowers welfare.
+\end{proposition}
+
+Part (i) is a result about efficiency. Because the market equilibrium already allocates too little capital to development, the reallocation induced by the AI shock moves capital from a use with social return $r/\phi$ to a use with social return $r$, and the loss on each reallocated unit, $r(1/\phi-1)$, can exceed the direct gain from the technology when appropriability is low and development capital is large relative to AI capital. Part (ii) adds the distributional incidence. Since the AI shock raises the income of the skilled group and lowers the income of the unskilled group whenever $\theta+\beta\hat{K}_D<0$, its welfare value depends on the weight attached to the second group, and Table~\ref{tab:lam} shows that the required weight is small for plausible values of appropriability. With $\sA=0.8$, $\theta=0$ and $\phi=0.3$, welfare falls for any $\lambda$ above 2.4, which, with logarithmic utility, corresponds to a ratio of per capita incomes between the two groups of 2.4. When appropriability is as low as 0.2 and the AI share is 0.5, the AI shock lowers welfare even with equal weights, which is case (i).
+
+\begin{table}
+\caption{Inequality aversion above which the AI shock lowers welfare ($\lambda^{*}$)}\label{tab:lam}
+\begin{tabular}{cccccc}
+\toprule
+ & & \multicolumn{4}{c}{Appropriability $\phi$} \\
+\cmidrule(lr){3-6}
+$\theta$ & $\sA$ & 0.2 & 0.3 & 0.5 & 1.0 \\
+\midrule
+0 & 0.5 & 0.66 & 1.02 & 1.82 & 4.43 \\
+0 & 0.8 & 1.55 & 2.41 & 4.29 & 10.43 \\
+0 & 0.9 & 3.04 & 4.71 & 8.41 & 20.43 \\
+0.25 & 0.5 & none & none & none & none \\
+0.25 & 0.8 & 24.96 & 38.67 & 69.00 & 167.57 \\
+0.25 & 0.9 & 25.30 & 39.20 & 69.95 & 169.88 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+Computed from equation \eqref{eq:lamstar} with $\varepsilon=0$, $\alpha=0.5$ and $\beta=0.3$. A value below one means that welfare falls with equal weights. ``None'' indicates that the income of the unskilled group rises ($\theta+\beta\hat{K}_D\ge0$), so that welfare rises for every $\lambda$.
+\end{tablenotes}
+\end{table}
+
+The table also shows the importance of the AI-for-development spillover. A spillover of one quarter, which is well below the threshold $\theta^{*}=1$ that would prevent crowding out with a fixed pool, raises the required inequality aversion by an order of magnitude and eliminates the welfare loss when the AI share is moderate. The welfare question therefore depends on the size of $\theta$, which is an empirical quantity, and on the appropriability of development returns, which is a policy variable.
+
+\subsection{Persistence through skill formation}
+
+The static model understates the inequality effect when development capital determines the skills of the next generation. Suppose that a fraction $\pi(K_D)$ of the children of unskilled workers becomes skilled, with $\pi'>0$, so that next-period skill supplies are $H'=H+\pi(K_D)L$ and $L'=(1-\pi(K_D))L$. A reduction in $K_D$ lowers $H'/L'$, which raises the next-period premium through the relative supply effect and reduces the number of unskilled households whose children gain access to the returns of AI. The crowding out of development capital therefore lowers intergenerational mobility between the two groups, and the inequality it generates persists after the investment boom ends.
+
+\section{Policy implications}
+
+The model identifies two policy margins. The first is appropriability. Instruments that raise $\phi$ for development investment, such as advance market commitments, outcome-based financing and guarantees that convert social returns into cash flows for funders, reduce the misallocation wedge and the welfare cost in Proposition~\ref{prop:welf}, although they do not reduce the proportional crowding out in Proposition~\ref{prop:crowd}, which depends on the shares and elasticities of the pool. The second margin is the separation of pools. Since crowding out arises because development capital competes with AI capital for the same funds, rules that protect development budgets from the required return on market capital, such as multiyear ODA commitments set as a share of gross national income, or a levy on AI capital expenditure earmarked for development capital, reduce $\hat{K}_D$ directly. A levy at rate $\tau$ on AI capital expenditure that is earmarked for development capital transfers $\tau\sA F$ to the development sector. A rate of one percent applied to the capital expenditure projected for 2026 would raise about USD 8 billion, which is close to the reduction of about USD 8.6 billion in DAC humanitarian assistance implied by the 2025 figures.
+
+\section{Testable predictions}
+
+The three explanations of the coincidence between the AI investment boom and the fall in development finance have different empirical implications. Under the crowding-out mechanism, positive shocks to the expected return on AI capital, which can be measured through surprises in the capital expenditure guidance of the largest technology firms at earnings announcements or through the returns of a portfolio of AI-exposed equities net of the market, should raise the cost of capital faced by low-income countries, measured through sovereign spreads and the pricing of development finance institutions, after controlling for policy rates in the United States. The same shocks should reduce development finance by more in return-seeking vehicles (private finance mobilized by official interventions, impact funds and the equity operations of development finance institutions), which compete for the common pool, than in grant budgets fixed in advance by multiyear commitments, and within development finance the reduction should be larger in capital-intensive sectors such as climate adaptation and energy access than in labor-intensive sectors such as primary health care, according to the composition result of Section II.A. Across donors, the decline in ODA should be related to measures of the exposure of each donor's capital markets and public budgets to AI investment, and the relation should hold when the United States is excluded from the sample.
+
+Under the donor-politics explanation, development finance should be unrelated to AI return shocks once donor-specific political events are controlled for, and the decline should be concentrated in grant ODA from a small number of donors with no systematic pattern across sectors by capital intensity. Under the AI-for-development explanation, AI return shocks should lower the cost of capital of low-income countries and raise development finance, particularly in sectors where AI applications are most advanced. Project-level data from the OECD Creditor Reporting System, the OECD data on amounts mobilized from the private sector, and daily sovereign bond data provide the variation required to discriminate among these predictions, and the data calendar makes the first tests feasible with the final 2025 DAC statistics, scheduled for December 2026.
+
+\section{Conclusion}
+
+The model shows that an AI investment boom can raise global inequality through the allocation of capital as well as through labor demand. When AI capital and development capital are financed from a common pool and the returns to development capital are only partly appropriable by those who finance it, an AI productivity shock raises the required return on all investment and reduces development capital unless AI raises the productivity of the sectors of the poor by more than a threshold that grows with AI's share of the portfolio. The reallocation adds a crowding-out term to the global skill premium, which accounts for about one quarter of the increase in the illustrative calibration, and it can lower inequality-weighted welfare at low levels of inequality aversion and, when appropriability is low, even unweighted world output. Since the welfare cost depends on appropriability and the size of the reallocation depends on whether development finance shares a pool with AI capital, the policy implication is that the protection of development investment during the AI boom requires instruments that convert the social returns of development capital into returns for funders and rules that separate development budgets from the market return on capital.
+
+\bibliographystyle{aea}
+\bibliography{refs}
+
+\appendix
+
+\section{Derivations}
+
+\textit{Equilibrium responses.} Log-differentiating $r=\mathrm{MPK}_A=\alpha A K_A^{\alpha-1}H^{1-\alpha}$ and $r=\phi\,\mathrm{MPK}_D=\phi\beta B K_D^{\beta-1}L^{1-\beta}$ with respect to $\ln A$, holding $H$, $L$ and $\phi$ fixed, gives
+\[
+\hat{r}=1-(1-\alpha)\hat{K}_A,\qquad \hat{r}=\theta-(1-\beta)\hat{K}_D ,
+\]
+so that $\hat{K}_A=(1-\hat{r})/(1-\alpha)$ and $\hat{K}_D=(\theta-\hat{r})/(1-\beta)$. Log-differentiating the pool constraint $K_A+K_D=F_0r^{\varepsilon}$ gives $\sA\hat{K}_A+\sD\hat{K}_D=\varepsilon\hat{r}$. Substituting,
+\[
+a(1-\hat{r})+d(\theta-\hat{r})=\varepsilon\hat{r}
+\quad\Longrightarrow\quad
+\hat{r}=\frac{a+d\theta}{\varepsilon+a+d},
+\]
+and therefore
+\[
+\hat{K}_D=\frac{\theta(\varepsilon+a+d)-a-d\theta}{(1-\beta)(\varepsilon+a+d)}=\frac{\theta(\varepsilon+a)-a}{(1-\beta)(\varepsilon+a+d)} .
+\]
+
+\textit{Proposition~\ref{prop:crowd}.} Since $a,d>0$ and $\theta\ge0$, $\hat{r}>0$. The sign of $\hat{K}_D$ is the sign of $\theta(\varepsilon+a)-a$, which is negative if and only if $\theta<a/(\varepsilon+a)=\sA/[\sA+\varepsilon(1-\alpha)]$. The threshold is increasing in $\sA$ and decreasing in $\varepsilon$. With $\varepsilon=0$ and $\theta=0$, $\hat{K}_D=-a/[(1-\beta)(a+d)]$, and $d/a=\sD(1-\alpha)/[\sA(1-\beta)]$ is decreasing in $\sA$. For several development capital types with common $\phi$, each satisfies $\hat{r}=\theta_j-(1-\beta_j)\hat{K}_{D,j}$, which gives the composition result.
+
+\textit{Proposition~\ref{prop:prem}.} From $w_H=(1-\alpha)AK_A^{\alpha}H^{-\alpha}$ and $w_L=(1-\beta)BK_D^{\beta}L^{-\beta}$, $\hat{w}_H=1+\alpha\hat{K}_A$ and $\hat{w}_L=\theta+\beta\hat{K}_D$, and equation \eqref{eq:prem} follows. If $\theta<\theta^{*}$, then $\hat{K}_D<0$. If $\theta\le1$, then $d\theta\le d+\varepsilon$, so $\hat{r}\le1$ and $\hat{K}_A\ge0$.
+
+\textit{Proposition~\ref{prop:welf}.} Weighted welfare is $W=I_H+\lambda I_L=Y_A+\Lambda Y_D$, so that $dW=Y_A\hat{Y}_A+\Lambda Y_D\hat{Y}_D$ with $\hat{Y}_A=1+\alpha\hat{K}_A$ and $\hat{Y}_D=\theta+\beta\hat{K}_D$. From $rK_A=\alpha Y_A$ and $rK_D=\phi\beta Y_D$, $Y_D/Y_A=\alpha/(\phi\beta k)$, which gives equation \eqref{eq:welf}. For part (i), with $\lambda=1$ we have $\Lambda=1$, and with $\varepsilon=0$ the pool constraint gives $\sA\hat{K}_A=-\sD\hat{K}_D$, so that $\alpha\hat{K}_A=-(\alpha/k)\hat{K}_D$; substituting gives $1+(\alpha/k)(1/\phi-1)\hat{K}_D+\alpha\theta/(\phi\beta k)$. Part (ii) follows by setting equation \eqref{eq:welf} to zero and solving for $\Lambda$, and then for $\lambda$ from the definition of $\Lambda$. Since $\hat{K}_A$ and $\hat{K}_D$ do not depend on $\phi$, $\Lambda^{*}=\phi C$ with $C=\beta k(1+\alpha\hat{K}_A)/(\alpha|\theta+\beta\hat{K}_D|)$, so that $\lambda^{*}=\phi(C-\beta)/(1-\phi\beta)$ and $\partial\lambda^{*}/\partial\phi=(C-\beta)/(1-\phi\beta)^{2}$, which is positive if and only if $k(1+\alpha\hat{K}_A)>\alpha|\theta+\beta\hat{K}_D|$. The condition holds in every case reported in Table~\ref{tab:lam}.
+
+\end{document}
