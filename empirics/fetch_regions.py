@@ -120,8 +120,37 @@ def oecd_dac2a():
     return out
 
 
+CRS_SECTORS = "1000+100+110+120+130+140+150+160+200+210+220+230+240+250+300+310+320+330+400+410+430+500+510+520+600+700+720+730+740+910+930+998"
+
+
+def oecd_crs():
+    """CRS ODA (measure 100) by recipient and purpose-sector group, all channels and
+    modalities, disbursements and commitments, constant USD, from all official donors
+    (ALLD) and from the United States. Key order: DONOR.RECIPIENT.SECTOR.MEASURE.CHANNEL.
+    MODALITY.FLOW_TYPE.PRICE_BASE.MD_DIM.MD_ID.UNIT_MEASURE (MD_ID is '0')."""
+    frames = []
+    for donor in ("ALLD", "USA"):
+        path = RAW / "oecd" / f"crs_{donor}_recipient_sector.csv"
+        if not path.exists() or path.stat().st_size < 1000:
+            url = ("https://sdmx.oecd.org/dcd-public/rest/data/OECD.DCD.FSD,DSD_CRS@DF_CRS,/"
+                   f"{donor}..{CRS_SECTORS}.100._T._T.D+C.Q._T.0.USD?startPeriod=2015&format=csvfilewithlabels")
+            r = requests.get(url, headers={**HDR, "Accept": "text/csv"}, timeout=1500)
+            r.raise_for_status()
+            path.write_bytes(r.content)
+        d = pd.read_csv(path, low_memory=False)
+        d = d[["DONOR", "RECIPIENT", "Recipient", "SECTOR", "Sector", "FLOW_TYPE", "TIME_PERIOD", "OBS_VALUE"]]
+        d.columns = ["donor", "recipient", "recipient_name", "sector", "sector_name", "flow_type", "year", "value"]
+        frames.append(d)
+    out = pd.concat(frames, ignore_index=True)
+    out.to_csv(PROC / "oecd_crs_recipient_sector.csv", index=False)
+    print("CRS rows:", len(out), "recipients:", out.recipient.nunique(), "sectors:", out.sector.nunique(),
+          "years:", out.year.min(), "-", out.year.max())
+    return out
+
+
 def main():
     oecd_dac2a()
+    oecd_crs()
     m = meta()
     print("countries:", len(m))
     frames = []
