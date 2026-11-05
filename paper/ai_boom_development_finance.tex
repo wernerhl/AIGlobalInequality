@@ -63,6 +63,26 @@ Sum over Microsoft, Alphabet, Amazon, Meta and Oracle, from 10-Q and 10-K cash-f
 \end{tablenotes}
 \end{table}
 
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/fig_capex.png}
+\caption{Quarterly capital expenditure of the five hyperscalers}\label{fig:capex}
+\begin{figurenotes}
+Quarterly capex by firm from 10-Q and 10-K cash-flow statements (SEC EDGAR), de-cumulated from year-to-date figures. Dashed line: release of ChatGPT, November 2022.
+\end{figurenotes}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/fig_hyperscaler_funding.png}
+\caption{How the hyperscalers fund capital expenditure}\label{fig:funding}
+\begin{figurenotes}
+Left: cash from operations and long-term debt issued (stacked bars) against capital expenditure and capital expenditure plus buybacks and dividends (lines), USD billion per quarter, sum over the five firms. Right: share repurchases, long-term debt issued, and capex minus cash from operations.
+\end{figurenotes}
+\end{figure}
+Figure~\ref{fig:capex} shows the quarterly path by firm and Figure~\ref{fig:funding} the sources and uses of funds: the switch from internal to external finance in late 2025 is visible as the gap between capex and cash from operations closing and then turning positive while debt issuance replaces buybacks.
+
 Figure~\ref{fig:us} places the boom inside US investment. Hyperscaler capex was 4 to 5 percent of US private nonresidential fixed investment before 2023 and 15 percent by mid-2026. Construction spending on data centers, which the Census Bureau reports separately, rose from USD 8.5 billion in 2019 to USD 50 billion in 2025 and USD 68 billion over the twelve months to September 2026, and from about 2 percent of private nonresidential construction to 12 percent; construction of health-care and educational facilities, by contrast, grew by 40 and 33 percent over the same pre-to-post comparison, in line with nonresidential construction as a whole. Private nonresidential investment net of hyperscaler capex grew 31 percent between the pre and post periods. Within the United States, in other words, AI has not yet displaced other investment in levels; it has added a new category that is growing much faster than the rest.
 
 \begin{figure}
@@ -113,6 +133,17 @@ Trailing four-quarter sums, USD billion. International debt securities from the 
 \end{figurenotes}
 \end{figure}
 
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/fig_bond_stocks.png}
+\caption{Stocks of bonds outstanding: supranationals, developing economies, the United States and the world}\label{fig:stocks}
+\begin{figurenotes}
+Left: international debt securities outstanding by residence of issuer, 2019Q4 = 100 (BIS). Right: US nonfinancial corporate debt securities outstanding as a share of GDP (Federal Reserve financial accounts). Dotted line: November 2022.
+\end{figurenotes}
+\end{figure}
+Figure~\ref{fig:stocks} shows the stocks: the supranationals' outstanding bonds have nearly doubled since 2019 while US nonfinancial corporate bonds have fallen relative to GDP.
+
 Cross-border bank lending tells the same story. BIS locational statistics show FX-adjusted flows to emerging and developing economies of USD 66 billion a quarter after 2023 against USD 9 billion before, with Africa and the Middle East receiving USD 31 billion a quarter against 12 billion, and Latin America and emerging Europe moving from net repayment to net inflow. Flows to the United States rose as well, from 104 to 237 billion a quarter. Quarterly regressions of these quantities on the AI factor give positive coefficients: quarters of high AI abnormal returns are quarters in which development banks and emerging-market sovereigns issue more, the risk-on co-movement dominating any reallocation at this frequency.
 
 \section{Prices: do AI return shocks raise the cost of capital of developing countries?}\label{sec:prices}
@@ -140,7 +171,16 @@ Two-day windows starting on the first session after the release. Abnormal return
 \end{tablenotes}
 \end{table}
 
-Abnormal returns of the AI firms, the market's revision of expected AI cash flows, do not move emerging-market spreads; if anything, hyperscaler surprises come with marginally tighter spreads. The daily AI factor co-moves positively with emerging-market assets, and the co-movement disappears once the market return is controlled for. The capital-expenditure surprise is the one shock with the predicted sign: a one-standard-deviation surprise lowers emerging-market bond funds by about 0.1 percent and raises the emerging-market public-sector spread by about 0.7 basis points. But US high-yield spreads widen by twice as much on the same days, so the response is a general repricing of risk rather than one specific to developing countries, and it is small. Figure~\ref{fig:aiem} shows that over the whole period the cumulative abnormal return of the AI basket and the price of emerging-market sovereign debt rose together while emerging-market spreads fell from 200 to 115 basis points.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/fig_event_coefs.png}
+\caption{Announcement-day responses of emerging-market assets to AI shocks}\label{fig:coefs}
+\begin{figurenotes}
+Coefficients from the regressions in Table~\ref{tab:prices} rescaled to a one-standard-deviation shock, with 95 percent confidence intervals (HAC). Outcomes are two-day ETF returns in percent or two-day spread changes in basis points.
+\end{figurenotes}
+\end{figure}
+Figure~\ref{fig:coefs} plots the same coefficients scaled to one-standard-deviation shocks. Abnormal returns of the AI firms, the market's revision of expected AI cash flows, do not move emerging-market spreads; if anything, hyperscaler surprises come with marginally tighter spreads. The daily AI factor co-moves positively with emerging-market assets, and the co-movement disappears once the market return is controlled for. The capital-expenditure surprise is the one shock with the predicted sign: a one-standard-deviation surprise lowers emerging-market bond funds by about 0.1 percent and raises the emerging-market public-sector spread by about 0.7 basis points. But US high-yield spreads widen by twice as much on the same days, so the response is a general repricing of risk rather than one specific to developing countries, and it is small. Figure~\ref{fig:aiem} shows that over the whole period the cumulative abnormal return of the AI basket and the price of emerging-market sovereign debt rose together while emerging-market spreads fell from 200 to 115 basis points.
 
 \begin{figure}
 \centering
@@ -175,9 +215,31 @@ OECD DAC1, net disbursements, constant 2024 prices. 2025 figures are preliminary
 \end{tablenotes}
 \end{table}
 
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/fig_oda_donors.png}
+\caption{Net ODA by donor and the 2025 cut}\label{fig:donors}
+\begin{figurenotes}
+Left: net ODA by donor, constant USD billion (OECD DAC1; 2025 preliminary). Right: real change in net ODA between 2024 and 2025 for donors above USD 1 billion.
+\end{figurenotes}
+\end{figure}
+Figure~\ref{fig:donors} shows the donor composition and the 2025 changes.
+
 Two parts of the earlier rise deserve note because they shape what came after. The increase between 2021 and 2023 was dominated by support to Ukraine, which rose from USD 2 billion a year to 36 billion, and by spending on refugees inside donor countries, which rose from USD 12 billion to 36 billion in 2022 before falling back to 29 billion in 2024. Neither item reaches the poorest countries, and the 2024 decline was largely the unwinding of the second.
 
 Private finance mobilised by official development interventions, the vehicle that the companion paper's crowding-out mechanism predicts should fall first because it competes for the common pool, rose instead, to USD 297 billion in 2024 from 260 billion in 2022 and 206 billion in 2018. Its destination is instructive: USD 123 billion went to banking and financial services, 37 billion to energy, 25 billion to transport, and 1.5 and 1.8 billion to health and education. By income group, USD 37 billion was mobilised for upper-middle-income countries, 19 billion for lower-middle-income and 3 billion for low-income countries.
+
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/fig_mobilisation.png}
+\caption{Private finance mobilised by official development interventions}\label{fig:mob}
+\begin{figurenotes}
+Amounts mobilised from the private sector by official development finance interventions, constant USD billion, by sector (left) and by recipient income group (right; regional and unallocated amounts excluded). Source: OECD.
+\end{figurenotes}
+\end{figure}
+Figure~\ref{fig:mob} shows the sectoral and income-group destination of mobilised finance.
 
 \section{Recipients: regions and countries}\label{sec:recipients}
 
@@ -205,6 +267,26 @@ OECD DAC2A, net ODA disbursements from all official donors, constant prices. Cha
 \end{tablenotes}
 \end{table}
 
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/fig_recipient_groups.png}
+\caption{ODA received by recipient group and the United States share}\label{fig:groups}
+\begin{figurenotes}
+Left: net ODA received by recipient group, constant USD billion (OECD DAC2A); Ukraine shown separately. Right: share of ODA received that came from the United States. Dotted line: November 2022.
+\end{figurenotes}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/fig_lic_finance.png}
+\caption{External finance of low- and lower-middle-income countries, percent of GNI}\label{fig:licfin}
+\begin{figurenotes}
+Net ODA received, FDI inflows, net official and private external-debt flows and portfolio equity, stacked, as a percent of GNI; remittances shown as a line. Sources: World Bank WDI and IDS, income-group aggregates.
+\end{figurenotes}
+\end{figure}
+Figure~\ref{fig:groups} shows the recipient groups over time and the US share of each, and Figure~\ref{fig:licfin} the composition of external finance for low- and lower-middle-income countries as a share of GNI: for low-income countries ODA is three-quarters of the total and private debt flows are nil.
+
 The country-level record combines the OECD recipient data with the World Bank's external-flow and debt statistics for 131 low- and middle-income countries. For each country I compute net ODA as a share of GNI, the US share of its 2024 ODA, whether it had any access to markets in 2022--24 (any public or private bond issuance, or positive net flows from private creditors), and the change in its total external finance between 2019--21 and 2022--24. The median low-income country receives ODA equal to 8.8 percent of GNI, 22 percent of it from the United States; only 24 percent of low-income countries have market access; and their total external finance fell by 1.7 percentage points of GNI between the two periods, all of it from ODA, private flows having been unchanged at zero. The corresponding figures for lower-middle-income countries are 3.6 percent of GNI, 13 percent US share, 38 percent with market access and a 0.3-point decline.
 
 Defining a country as left behind if ODA exceeds 5 percent of GNI and it has no market access yields 32 countries with 398 million people, 311 million of them in Sub-Saharan Africa. Applying the observed 57 percent US cut to each country's 2024 US share gives a first measure of exposure to 2025: Afghanistan loses about 3.8 percent of GNI, Somalia 3.3, Liberia 2.9, the Central African Republic 2.4, Mozambique 2.4, Lesotho 1.8, Malawi 1.7, Niger 1.5, Jordan 1.3, Haiti and Burundi 1.1, and the Democratic Republic of Congo, with 109 million people, 0.9 percent. Figure~\ref{fig:exposure} plots aid dependence against the US share for all countries; the countries without market access, marked with black edges, are concentrated where both are high.
@@ -217,6 +299,17 @@ Defining a country as left behind if ODA exceeds 5 percent of GNI and it has no 
 Left: net ODA received as a share of GNI (2022--24 average) against the US share of 2024 ODA; bubble area proportional to population; black edge denotes no market access in 2022--24. Right: change in ODA received by region and exposure to the 2025 US cut as a share of 2024 ODA; Europe (Ukraine) omitted. Sources: OECD DAC2A, World Bank WDI and IDS.
 \end{figurenotes}
 \end{figure}
+
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/fig_map_exposure.png}
+\caption{Aid dependence and exposure to the 2025 US cut}\label{fig:map}
+\begin{figurenotes}
+Top: net ODA received as a share of GNI, 2022--24 average; black outlines mark the 32 countries with ODA above 5 percent of GNI and no market access. Bottom: exposure to the 2025 US cut, 2024 US share of ODA times 57 percent, as a share of GNI. Sources: OECD DAC2A, World Bank; boundaries from Natural Earth.
+\end{figurenotes}
+\end{figure}
+Figure~\ref{fig:map} maps both measures.
 
 \section{Sectors}\label{sec:sectors}
 
@@ -257,11 +350,21 @@ The composition prediction of the companion model, that capital-intensive develo
 \includegraphics[width=\textwidth]{figures/fig_sectors.png}
 \caption{ODA by sector, the US share, and the composition change by recipient group}\label{fig:sectors}
 \begin{figurenotes}
-Left: gross ODA disbursements to developing countries by sector, constant USD billion (OECD CRS). Middle: US share of each sector in 2024. Right: change between 2022 and 2024 in capital-intensive sectors, labour-intensive services and humanitarian aid, by recipient group.
+Top left: gross ODA disbursements to developing countries by sector, constant USD billion (OECD CRS). Top right: US share of each sector in 2024. Bottom left: ODA to low-income countries by sector. Bottom right: change between 2022 and 2024 in capital-intensive sectors, labour-intensive services and humanitarian aid, by recipient group.
 \end{figurenotes}
 \end{figure}
 
-At the country level the two left-behind profiles lose in different sectors. The Southern and Eastern African countries with high HIV burdens lose health: the US cut to health and HIV programmes alone amounts to about 1.6 percent of GNI in Mozambique, 1.1 in Lesotho, 1.0 in Malawi, 0.9 in Eswatini and Liberia, 0.7 in Burundi, 0.6 in Zambia and 0.5 in Uganda. The conflict economies lose humanitarian relief, of which the United States funded 65 percent in Somalia, 59 percent in Zimbabwe, 53 percent in the Democratic Republic of Congo and 44 percent in Afghanistan. Education, water and infrastructure, being funded mainly by European donors and the multilateral banks, are barely exposed.
+At the country level the two left-behind profiles lose in different sectors. The Southern and Eastern African countries with high HIV burdens lose health: the US cut to health and HIV programmes alone amounts to about 1.6 percent of GNI in Mozambique, 1.1 in Lesotho, 1.0 in Malawi, 0.9 in Eswatini and Liberia, 0.7 in Burundi, 0.6 in Zambia and 0.5 in Uganda. The conflict economies lose humanitarian relief, of which the United States funded 65 percent in Somalia, 59 percent in Zimbabwe, 53 percent in the Democratic Republic of Congo and 44 percent in Afghanistan. Education, water and infrastructure, being funded mainly by European donors and the multilateral banks, are barely exposed. Figure~\ref{fig:csector} decomposes the exposure of the 25 most exposed countries by sector.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/fig_country_sector_exposure.png}
+\caption{Exposure to the 2025 US cut by sector, 25 most exposed countries}\label{fig:csector}
+\begin{figurenotes}
+Exposure is the 2024 US disbursement in each sector times 57 percent, as a share of GNI (OECD CRS, World Bank). Health and HIV combines the CRS health and population/reproductive-health sectors. Compact-of-Free-Association recipients (Marshall Islands, Micronesia, Palau) are excluded because their US funding was not cut.
+\end{figurenotes}
+\end{figure}
+
 
 \section{Interpretation}\label{sec:interp}
 
